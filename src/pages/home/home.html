@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <ion-card *ngFor="let pokemon of pokemons" (click)="itemTapped($event, pokemon)" style="text-align: center;">
+      <ion-item>
+        <ion-avatar item-left>
+          <img [src]="[pokemon.sprites.front_shiny]" />
+        </ion-avatar>
+        <h2> {{pokemon.name}}</h2>
+      </ion-item>
+      <img [src]="[pokemon.sprites.front_default]" style="height: 200px; width: 200px; display: initial;"/>
+      <ion-card-content>
+        <p>Experience: {{pokemon.base_experience}}</p>
+        <p>Height: {{pokemon.height}}</p>
+        <p>Weight: {{pokemon.weight}}</p>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>Like</div>
+      </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+        <ion-icon name="text"></ion-icon>
+        <div>Comment</div>
+      </button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note>
+            Id: {{pokemon.id}}
+          </ion-note>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+</ion-content>

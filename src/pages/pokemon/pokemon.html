@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{pokemon.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-card>
+    <img [src]="[pokemon.sprites.front_default]" />
+  </ion-card>
+  <ion-item-group>
+    <ion-item-divider color="dark">
+      Stats
+    </ion-item-divider>
+    <ion-grid>
+      <ion-row center>
+        <ion-col width-50>Name</ion-col>
+        <ion-col width-25>Stat</ion-col>
+        <ion-col width-25>Effort</ion-col>
+      </ion-row>
+      <ion-row center *ngFor="let stat of pokemon.stats">
+        <ion-col width-50>{{stat.stat.name}}</ion-col>
+        <ion-col width-25>{{stat.base_stat}}</ion-col>
+        <ion-col width-25>{{stat.effort}}</ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item-divider color="dark">
+      Abilities
+    </ion-item-divider>
+    <ion-card *ngFor="let ability of abilities">
+      <ion-card-title>
+        {{ability.name}}
+      </ion-card-title>
+      <ion-card-content>
+        <p *ngFor="let entry of ability.effect_entries">{{entry.short_effect}}</p>
+        <br/>
+        <p *ngFor="let entry of ability.effect_entries">{{entry.effect}} </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-item-group>
+</ion-content>
